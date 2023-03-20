@@ -1,3 +1,4 @@
+import MovieList from '@/components/Home/MovieList';
 import Welcome from '@/components/Home/Welcome';
 import { useAppSelector } from '@/store/hooks';
 import { NextPage } from 'next';
@@ -22,6 +23,7 @@ const Home: NextPage = () => {
 
       <main>
         <Welcome isVisible={isFirstLoad} />
+        <MovieList />
       </main>
     </>
   );

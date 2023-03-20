@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Roboto } from 'next/font/google';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -12,9 +12,23 @@ interface Props {
 }
 
 const Welcome: React.FC<Props> = ({ isVisible }) => {
+  // state of hidden parent
+  const [isHidden, setIsHidden] = useState<boolean>(false);
+
+  // parent will be hidden a sec after visible is false but delayed one sec
+  useEffect(() => {
+    if (!isVisible) {
+      setTimeout(() => {
+        setIsHidden(true);
+      }, 1000);
+    }
+  }, [isVisible]);
+
   return (
     <div
-      className="w-full min-h-screen flex flex-col justify-center items-center"
+      className={`w-full min-h-screen flex flex-col justify-center items-center ${
+        isHidden && 'hidden'
+      }`}
       style={{ fontFamily: `${roboto.style.fontFamily}` }}
     >
       <AnimatePresence>
