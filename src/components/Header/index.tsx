@@ -3,13 +3,11 @@ import { BiSearch } from 'react-icons/bi';
 
 const Header: React.FC = () => {
   return (
-    <div className="w-full bg-primaryBlack/60">
-      <div className="max-w-[1440px] h-14 mx-auto px-4 flex items-stretch justify-between gap-4 border-b-[1px] border-b-primaryGrey/10 lg:px-10 lg:h-16">
+    <div className="w-full bg-primaryBlack/60 border-b-[1px] border-b-primaryGrey/10 ">
+      <div className="max-w-[1440px] h-14 mx-auto px-4 flex items-stretch justify-between gap-4 lg:px-10 lg:h-16">
+        {/* LOGO */}
         <div className="flex items-center gap-6 w-1/2">
-          {/* LOGO */}
           <span className="text-4xl text-primaryRed font-bold ">FELIX</span>
-
-          {/* Navlinks */}
         </div>
 
         {/* SEARCH */}
