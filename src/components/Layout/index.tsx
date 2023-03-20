@@ -1,11 +1,19 @@
 import React, { ReactNode } from 'react';
+import Footer from '../Footer';
+import Header from '../Header';
 
 interface Props {
   children?: ReactNode;
 }
 
 const Layout: React.FC<Props> = ({ children }) => {
-  return <div className="w-full min-h-screen bg-primaryBlack">{children}</div>;
+  return (
+    <div className="w-full min-h-screen bg-primaryBlack">
+      <Header />
+      <main className="max-w-[1440px] mx-auto min-h-screen">{children}</main>
+      <Footer />
+    </div>
+  );
 };
 
 export default Layout;
