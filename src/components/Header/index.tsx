@@ -1,7 +1,11 @@
+import { useAppDispatch } from '@/store/hooks';
+import { setValue } from '@/store/slices/firstLoad-slice';
 import React from 'react';
 import { BiSearch } from 'react-icons/bi';
 
 const Header: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   return (
     <div className="w-full bg-primaryBlack/60 border-b-[1px] border-b-primaryGrey/10 ">
       <div className="max-w-[1440px] h-14 mx-auto px-4 flex items-stretch justify-between gap-4 lg:px-10 lg:h-16">
@@ -17,6 +21,7 @@ const Header: React.FC = () => {
               type="text"
               placeholder="Search ..."
               className="w-[80%] bg-transparent text-md px-4 outline-none text-primaryWhite font-semibold"
+              onFocus={() => dispatch(setValue(false))}
             />
             <button
               type="submit"

@@ -2,6 +2,8 @@ import Layout from '@/components/Layout';
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { Quicksand } from 'next/font/google';
+import { Provider } from 'react-redux';
+import store from '../store';
 
 const quicksand = Quicksand({
   subsets: ['latin'],
@@ -19,9 +21,11 @@ export default function App({ Component, pageProps }: AppProps) {
       `}</style>
 
       {/* App */}
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Provider store={store}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
     </>
   );
 }
