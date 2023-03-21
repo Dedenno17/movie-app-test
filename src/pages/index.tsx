@@ -1,4 +1,4 @@
-import MovieList from '@/components/Home/MovieList';
+import ContentList from '@/components/Home/ContentList';
 import Welcome from '@/components/Home/Welcome';
 import { useLazyGetContentsQuery } from '@/store/apiCalls';
 import { useAppSelector } from '@/store/hooks';
@@ -38,7 +38,7 @@ const Home: NextPage = () => {
 
       <main>
         <Welcome isVisible={isFirstLoad} />
-        <MovieList contentData={data} isLoading={isLoading} />
+        <ContentList contentData={data} isLoading={isLoading} />
       </main>
     </>
   );
