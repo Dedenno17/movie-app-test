@@ -2,11 +2,17 @@ import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 
 // Reducers
 import firstLoadReducer from './slices/firstLoad-slice';
+import searchInputReducer from './slices/searchInput-slice';
+import { api } from './apiCalls';
 
 const store = configureStore({
   reducer: {
     isFirstLoad: firstLoadReducer,
+    searchInput: searchInputReducer,
+    [api.reducerPath]: api.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware),
 });
 
 export default store;

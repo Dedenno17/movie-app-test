@@ -1,7 +1,15 @@
+import { useAppSelector } from '@/store/hooks';
+import { Content, ContentData } from '@/types';
 import React from 'react';
 
-const MovieList: React.FC = () => {
-  return <div>MovieList</div>;
+interface Props {
+  contentData: ContentData | undefined;
+  isLoading: boolean;
+}
+
+const MovieList: React.FC<Props> = ({ contentData, isLoading }) => {
+  console.log(contentData);
+  return <div className="w-full min-h-screen grid grid-cols-3">MovieList</div>;
 };
 
 export default React.memo(MovieList);
