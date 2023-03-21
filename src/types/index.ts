@@ -10,4 +10,6 @@ export interface Content {
 // types of content data
 export interface ContentData {
   Search: Content[];
+  Response: string;
+  totalResults: number;
 }
