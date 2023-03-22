@@ -26,7 +26,7 @@ const Welcome: React.FC<Props> = ({ isVisible }) => {
 
   return (
     <div
-      className={`w-full min-h-screen flex flex-col justify-center items-center bg-primaryGrey ${
+      className={`w-full min-h-screen flex flex-col justify-center items-center ${
         isHidden && 'hidden'
       }`}
       style={{ fontFamily: `${roboto.style.fontFamily}` }}
