@@ -23,12 +23,10 @@ const ContentList: React.FC<Props> = ({ contentData, isLoading }) => {
 
   return (
     <div
-      className={`w-full min-h-screen py-4 ${
-        contentData && contentData.Response ? 'block' : 'hidden'
-      }`}
+      className={`w-full min-h-screen py-4 ${contentData ? 'block' : 'hidden'}`}
     >
       {/* CONTENT */}
-      {contentData && !isLoading && (
+      {contentData && contentData.Response === 'True' && !isLoading && (
         <ul className="w-full grid grid-cols-3 gap-4 md:grid-cols-5 md:gap-6 lg:grid-cols-6 lg:gap-8">
           {contentData.Search.map((item: Content) => (
             <li
@@ -36,10 +34,10 @@ const ContentList: React.FC<Props> = ({ contentData, isLoading }) => {
               className="w-full h-56 rounded-lg flex flex-col overflow-hidden lg:h-64 xl:h-96"
             >
               <div
-                className="w-full h-[75%] rounded-b-lg overflow-hidden cursor-pointer relative group"
+                className="w-full h-[75%] rounded-b-lg overflow-hidden cursor-pointer relative bg-secondaryGrey group"
                 onClick={() => router.push(`/content/${item.imdbID}`)}
               >
-                <div className="relative w-full h-full">
+                <div className="relative w-full h-full transition duration-500 group-hover:scale-105">
                   <Image
                     src={
                       item.Poster === 'N/A'
@@ -73,6 +71,11 @@ const ContentList: React.FC<Props> = ({ contentData, isLoading }) => {
 
       {/* SKELETON LOADING */}
       {isLoading && <SkeletonLoading />}
+
+      {/* CONTENT NOT FOUND */}
+      {contentData && contentData.Response === 'False' && (
+        <div className="w-full text-center text-lg text-secondaryGrey font-bold">{`There are no Content such like that`}</div>
+      )}
     </div>
   );
 };

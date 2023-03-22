@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Roboto } from 'next/font/google';
 import { AnimatePresence, motion } from 'framer-motion';
-
-const roboto = Roboto({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '700', '900'],
-});
 
 interface Props {
   isVisible: boolean;
@@ -29,7 +23,6 @@ const Welcome: React.FC<Props> = ({ isVisible }) => {
       className={`w-full min-h-screen flex flex-col justify-center items-center ${
         isHidden && 'hidden'
       }`}
-      style={{ fontFamily: `${roboto.style.fontFamily}` }}
     >
       <AnimatePresence>
         {isVisible && (

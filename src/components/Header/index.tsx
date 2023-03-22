@@ -31,6 +31,16 @@ const Header: React.FC = () => {
     dispatch(setSearchInputValue(inputValue));
   };
 
+  // logo click handler
+  const clickLogoHandler = () => {
+    const isHome = router.pathname === '/';
+    if (isHome) {
+      return;
+    }
+    dispatch(setValue(false));
+    router.push('/');
+  };
+
   return (
     <div
       className={`w-full bg-primaryBlack/95 border-b-[1px] border-b-primaryGrey/10 ${
@@ -43,7 +53,7 @@ const Header: React.FC = () => {
         {/* LOGO */}
         <div
           className="flex items-center gap-6 w-1/2"
-          onClick={() => router.push('/')}
+          onClick={clickLogoHandler}
         >
           <span className="text-4xl text-primaryRed font-bold cursor-pointer">
             FELIX

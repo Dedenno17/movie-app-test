@@ -15,6 +15,10 @@ const genreList: string[] = [
 ];
 
 const Footer: React.FC = () => {
+  const scrollToTopHandler = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="w-full bg-secondaryGrey">
       <div className="max-w-[1440px] mx-auto px-4 py-8 flex flex-col gap-8 md:flex-row lg:px-10 lg:justify-between">
@@ -57,7 +61,10 @@ const Footer: React.FC = () => {
           &copy; Copyright {new Date().getFullYear()} by Felix. All Rights
           Reserved
         </span>
-        <span className="p-1 bg-primaryGrey/40 rounded-sm cursor-pointer text-sm text-primaryGrey">
+        <span
+          className="p-1 bg-primaryGrey/40 rounded-sm cursor-pointer text-sm text-primaryGrey"
+          onClick={scrollToTopHandler}
+        >
           <FaArrowUp />
         </span>
       </div>

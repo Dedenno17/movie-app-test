@@ -138,7 +138,7 @@ const Home: NextPage = () => {
         <ContentList contentData={data} isLoading={isLoading} />
 
         {/* Pagination when screen large */}
-        {data && (
+        {data && data.Response === 'True' && (
           <Pagination
             curPage={curPage}
             rangePage={rangePage}
@@ -150,7 +150,7 @@ const Home: NextPage = () => {
         )}
 
         {/* Pagination when screen small & mid */}
-        {data && (
+        {data && data.Response === 'True' && (
           <PaginationMobile
             curPage={curPage}
             prevPage={prevPage}
