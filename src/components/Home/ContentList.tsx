@@ -8,6 +8,7 @@ import React from 'react';
 import SkeletonLoading from './SkeletonLoading';
 import { BsPlayCircle } from 'react-icons/bs';
 import { useRouter } from 'next/router';
+import { useAppSelector } from '@/store/hooks';
 
 interface Props {
   contentData: ContentData | undefined;
@@ -16,6 +17,10 @@ interface Props {
 
 const ContentList: React.FC<Props> = ({ contentData, isLoading }) => {
   const router = useRouter();
+
+  // global state
+  const screenWidth = useAppSelector((state) => state.screenWidth.value);
+
   return (
     <div
       className={`w-full min-h-screen py-4 ${
@@ -55,7 +60,9 @@ const ContentList: React.FC<Props> = ({ contentData, isLoading }) => {
                   className="text-sm text-primaryWhite font-semibold cursor-pointer hover:text-primaryRed"
                   onClick={() => router.push(`/content/${item.imdbID}`)}
                 >
-                  {titleFormatSmallScreen(item.Title)}
+                  {screenWidth && screenWidth <= 768
+                    ? titleFormatSmallScreen(item.Title)
+                    : titleFormatLargeScreen(item.Title)}
                 </span>
                 <span className="text-xs text-primaryGrey">{`(${item.Year})`}</span>
               </div>

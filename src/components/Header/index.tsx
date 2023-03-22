@@ -1,4 +1,4 @@
-import { useAppDispatch } from '@/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { setValue } from '@/store/slices/firstLoad-slice';
 import { setSearchInputValue } from '@/store/slices/searchInput-slice';
 import { useRouter } from 'next/router';
@@ -8,6 +8,9 @@ import { BiSearch } from 'react-icons/bi';
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
+
+  // global state
+  const scrollY = useAppSelector((state) => state.scrollY.value);
 
   // state of searchInput
   const [inputValue, setInputValue] = useState<string>('');
@@ -29,7 +32,13 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-primaryBlack/60 border-b-[1px] border-b-primaryGrey/10 ">
+    <div
+      className={`w-full bg-primaryBlack/95 border-b-[1px] border-b-primaryGrey/10 ${
+        scrollY <= 100
+          ? 'static'
+          : 'fixed top-0 left-0 right-0 backdrop-blur-sm z-50 opacity-0 animate-fadeIn'
+      }`}
+    >
       <div className="max-w-[1440px] h-14 mx-auto px-4 flex items-stretch justify-between gap-4 lg:px-10 lg:h-16">
         {/* LOGO */}
         <div
