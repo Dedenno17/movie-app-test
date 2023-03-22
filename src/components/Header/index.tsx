@@ -1,11 +1,13 @@
 import { useAppDispatch } from '@/store/hooks';
 import { setValue } from '@/store/slices/firstLoad-slice';
 import { setSearchInputValue } from '@/store/slices/searchInput-slice';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
 
 const Header: React.FC = () => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   // state of searchInput
   const [inputValue, setInputValue] = useState<string>('');
@@ -30,8 +32,13 @@ const Header: React.FC = () => {
     <div className="w-full bg-primaryBlack/60 border-b-[1px] border-b-primaryGrey/10 ">
       <div className="max-w-[1440px] h-14 mx-auto px-4 flex items-stretch justify-between gap-4 lg:px-10 lg:h-16">
         {/* LOGO */}
-        <div className="flex items-center gap-6 w-1/2">
-          <span className="text-4xl text-primaryRed font-bold ">FELIX</span>
+        <div
+          className="flex items-center gap-6 w-1/2"
+          onClick={() => router.push('/')}
+        >
+          <span className="text-4xl text-primaryRed font-bold cursor-pointer">
+            FELIX
+          </span>
         </div>
 
         {/* SEARCH */}

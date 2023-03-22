@@ -34,7 +34,7 @@ const Welcome: React.FC<Props> = ({ isVisible }) => {
       <AnimatePresence>
         {isVisible && (
           <motion.h2
-            className="text-6xl text-primaryRed font-[500] lg:text-[5rem] xl:text-[6rem] mb-2"
+            className="text-6xl text-center text-primaryRed font-[500] lg:text-[5rem] xl:text-[6rem] mb-2"
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7 }}
@@ -47,7 +47,7 @@ const Welcome: React.FC<Props> = ({ isVisible }) => {
       <AnimatePresence>
         {isVisible && (
           <motion.h1
-            className="text-[4rem] text-primaryRed font-[900] lg:text-[5.5rem] xl:text-[6.5rem]"
+            className="text-[4rem] text-center text-primaryRed font-[900] lg:text-[5.5rem] xl:text-[6.5rem]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}

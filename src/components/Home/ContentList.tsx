@@ -7,6 +7,7 @@ import Image from 'next/image';
 import React from 'react';
 import SkeletonLoading from './SkeletonLoading';
 import { BsPlayCircle } from 'react-icons/bs';
+import { useRouter } from 'next/router';
 
 interface Props {
   contentData: ContentData | undefined;
@@ -14,6 +15,7 @@ interface Props {
 }
 
 const ContentList: React.FC<Props> = ({ contentData, isLoading }) => {
+  const router = useRouter();
   return (
     <div
       className={`w-full min-h-screen py-4 ${
@@ -28,7 +30,10 @@ const ContentList: React.FC<Props> = ({ contentData, isLoading }) => {
               key={item.imdbID}
               className="w-full h-56 rounded-lg flex flex-col overflow-hidden lg:h-64 xl:h-96"
             >
-              <div className="w-full h-[75%] rounded-b-lg overflow-hidden cursor-pointer relative group">
+              <div
+                className="w-full h-[75%] rounded-b-lg overflow-hidden cursor-pointer relative group"
+                onClick={() => router.push(`/content/${item.imdbID}`)}
+              >
                 <div className="relative w-full h-full">
                   <Image
                     src={
@@ -46,7 +51,10 @@ const ContentList: React.FC<Props> = ({ contentData, isLoading }) => {
                 <BsPlayCircle className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primaryWhite z-10 text-6xl scale-50 opacity-0 transition duration-500 group-hover:scale-100 group-hover:opacity-100" />
               </div>
               <div className="w-full h-[25%] flex flex-col justify-center gap-1 px-2 py-1">
-                <span className="text-sm text-primaryWhite font-semibold cursor-pointer hover:text-primaryRed">
+                <span
+                  className="text-sm text-primaryWhite font-semibold cursor-pointer hover:text-primaryRed"
+                  onClick={() => router.push(`/content/${item.imdbID}`)}
+                >
                   {titleFormatSmallScreen(item.Title)}
                 </span>
                 <span className="text-xs text-primaryGrey">{`(${item.Year})`}</span>
