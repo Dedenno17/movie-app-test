@@ -49,6 +49,10 @@ const InfoContent: React.FC<Props> = ({ singleContentData }) => {
             {singleContentData.Rated}
           </span>
         </div>
+        {/* LANGUAGE */}
+        <span className="w-full text-sm text-primaryGrey/40 font-bold">
+          Lanugage : {singleContentData.Language}
+        </span>
         {/* RATING */}
         <div className="hidden w-full py-4 border-y-[1px] border-y-primaryGrey/40 md:block">
           {singleContentData.imdbRating !== 'N/A' && (
