@@ -14,7 +14,8 @@ const SinopsisContent: React.FC<Props> = ({ singleContentData }) => {
         <h2 className="text-xl text-primaryWhite">Synopsis</h2>
         <p className="text-primaryGrey text-sm">{singleContentData.Plot}</p>
       </div>
-      {/* DIRECTOR */}
+
+      {/* DIRECTOR & WRITER*/}
       <div className="w-full flex items-center gap-8 py-4 border-y-[1px] border-y-primaryGrey/40">
         <div className="flex flex-col gap-4">
           <h3 className="text-sm text-primaryWhite">Director</h3>
@@ -30,7 +31,7 @@ const SinopsisContent: React.FC<Props> = ({ singleContentData }) => {
         </div>
       </div>
 
-      {/* RATING */}
+      {/* RATINGS */}
       <div className="w-full flex items-center gap-8 py-4 border-b-[1px] border-b-primaryGrey/40">
         {/* IMDB RATING */}
         <div className="flex flex-col gap-4">
@@ -56,6 +57,20 @@ const SinopsisContent: React.FC<Props> = ({ singleContentData }) => {
                 {singleContentData.Ratings.length < 2
                   ? 'There is no Rating'
                   : singleContentData.Ratings[1].Value}
+              </p>
+            </span>
+          </span>
+        </div>
+        {/* METASCORE */}
+        <div className="flex flex-col gap-4">
+          <h3 className="text-sm text-primaryWhite">META Critic</h3>
+          <span className="text-xs flex item-center gap-4">
+            <span className="bg-secondaryGrey p-2 text-primaryWhite font-bold flex items-center gap-2">
+              {singleContentData.Ratings.length > 2 && <BsFillStarFill />}
+              <p className="text-primaryGrey/40">
+                {singleContentData.Ratings.length < 3
+                  ? 'There is no Rating'
+                  : singleContentData.Ratings[2].Value}
               </p>
             </span>
           </span>
